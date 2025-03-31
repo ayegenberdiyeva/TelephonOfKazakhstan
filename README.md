@@ -1,1 +1,1 @@
-# TelephonOfKazakhstan
+# TelephoneOfKazakhstan
