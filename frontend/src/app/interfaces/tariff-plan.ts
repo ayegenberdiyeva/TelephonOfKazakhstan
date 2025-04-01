@@ -6,5 +6,7 @@ export interface TariffPlan {
     call_minutes: number;
     sms_count: number;
     description: string;
+    duration: number;
+    is_active: boolean;
 }
 

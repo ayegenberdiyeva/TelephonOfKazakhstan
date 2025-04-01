@@ -6,5 +6,6 @@ export interface UserTariffPlan {
     user: User;
     tariffPlan: TariffPlan;
     startDate: string;
+    endDate: string;
     is_active: boolean;
 }

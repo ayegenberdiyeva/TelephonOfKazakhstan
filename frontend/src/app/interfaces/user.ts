@@ -6,5 +6,6 @@ export interface User {
     email: string;
     password: string;
     phone: string;
-    is_admin: boolean;
+    is_active: boolean;
+    is_superuser: boolean;
 }
