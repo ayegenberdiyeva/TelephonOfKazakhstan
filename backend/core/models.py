@@ -3,7 +3,6 @@ from django.utils import timezone
 from datetime import timedelta
 
 class User(models.Model):
-    id = models.AutoField(primary_key=True)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     username = models.CharField(max_length=100, unique=True)
@@ -18,7 +17,6 @@ class User(models.Model):
         return self.username
 
 class TariffPlan(models.Model):
-    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     data_limit = models.IntegerField()  # in MB
@@ -32,7 +30,6 @@ class TariffPlan(models.Model):
         return self.name
 
 class UserTariffPlan(models.Model):
-    id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     tariff_plan = models.ForeignKey(TariffPlan, on_delete=models.CASCADE)
     start_date = models.DateTimeField(auto_now_add=True)
@@ -48,7 +45,6 @@ class UserTariffPlan(models.Model):
         return f"{self.user.username} - {self.tariff_plan.name}"
 
 class Transaction(models.Model):
-    id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     transaction_date = models.DateTimeField(auto_now_add=True)
