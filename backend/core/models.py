@@ -1,20 +1,24 @@
 from django.db import models
 from django.utils import timezone
 from datetime import timedelta
+from django.contrib.auth.models import AbstractBaseUser
 
-class User(models.Model):
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
-    username = models.CharField(max_length=100, unique=True)
-    email = models.EmailField(unique=True)
-    password = models.CharField(max_length=100)
+class User(AbstractBaseUser):
     phone = models.CharField(max_length=15, unique=True)
-    is_active = models.BooleanField(default=True)
-    is_staff = models.BooleanField(default=False)
-    is_superuser = models.BooleanField(default=False)
 
-    def __str__(self):
-        return self.username
+# class User(models.Model):
+#     first_name = models.CharField(max_length=100)
+#     last_name = models.CharField(max_length=100)
+#     username = models.CharField(max_length=100, unique=True)
+#     email = models.EmailField(unique=True)
+#     password = models.CharField(max_length=100)
+#     phone = models.CharField(max_length=15, unique=True)
+#     is_active = models.BooleanField(default=True)
+#     is_staff = models.BooleanField(default=False)
+#     is_superuser = models.BooleanField(default=False)
+
+#     def __str__(self):
+#         return self.username
 
 class TariffPlan(models.Model):
     name = models.CharField(max_length=100)
