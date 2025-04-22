@@ -1,0 +1,16 @@
+<ng-container *ngIf="!logged">
+  <span>Please</span>
+  <a [routerLink]="['/login']"> Log in </a>
+  <span> or </span>
+  <a [routerLink]="['/register']"> Register</a>
+  <span> to view your profile</span>
+</ng-container>
+
+<ng-container *ngIf="logged">
+  <p>Name: {{ user.name }}</p>
+  <p>Surname: {{ user.surname }}</p>
+  <p>Phone Number: {{ user.username }}</p>
+  <p>Tariff: {{ user.tariff?.name }}</p>
+  <button>Change Tariff</button>
+  <button (click)="logout()">Log out</button>
+</ng-container>

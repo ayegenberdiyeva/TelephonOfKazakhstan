@@ -1,0 +1,44 @@
+.nav {
+  margin: 0;
+  background-color: #0056b3;
+  height: 110px;
+  display: flex;
+  justify-content: space-between; /* разносит left и right по краям */
+  align-items: center;
+  padding: 0 30px;
+  font-size: large;
+  color: whitesmoke;
+}
+
+.right {
+  display: flex;
+  gap: 30px;
+}
+
+.left {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+a:hover {
+  color: #c1c7ec;
+}
+
+.user-info {
+  font-size: medium;
+  font-weight: bold;
+}
+.profile-icon {
+  width: 25px;
+  height: 25px;
+  margin-right: 3px;
+  vertical-align: middle;
+}
+
+

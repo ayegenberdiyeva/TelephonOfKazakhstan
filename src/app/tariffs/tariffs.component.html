@@ -1,0 +1,9 @@
+<h1>Tariff Plans</h1>
+<div *ngFor="let tariff of tariffs" class="tariff-card">
+  <h2>{{ tariff.name }}</h2>
+  <p><strong>Price:</strong> {{ tariff.price }}/month</p>
+  <p><strong>Data Limit:</strong> {{ tariff.data_limit ? tariff.data_limit + ' GB' : 'Unlimited' }}</p>
+  <p><strong>Call Minutes:</strong> {{ tariff.call_minutes? tariff.call_minutes + ' min' : 'Unlimited' }}</p>
+  <p><strong>SMS Count:</strong> {{ tariff.sms_count }}</p>
+  <button>Choose Plan</button>
+</div>

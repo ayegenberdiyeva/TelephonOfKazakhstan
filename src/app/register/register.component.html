@@ -1,0 +1,12 @@
+<div class="container">
+  <form [formGroup]="form" (submit)="submit()">
+    <h2>Registration</h2>
+    <input formControlName="name" type="text" placeholder="Name" required>
+    <input formControlName="surname" type = "text" placeholder="Surname" required>
+    <input formControlName="phone_number" type="text" placeholder="Phone number" required />
+    <input formControlName="password" type="password" placeholder="Password" required />
+    <button type="submit">Register</button>
+    <a href="/login">Sign In</a>
+  </form>
+
+</div>

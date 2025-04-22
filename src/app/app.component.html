@@ -1,0 +1,26 @@
+<div class="nav">
+<div class="right">
+  <a [routerLink]="['/tariffs']">Tariffs</a>
+  <a [routerLink]="['/services']">Services</a>
+  <a [routerLink]="['/contacts']">Contacts</a>
+</div>
+<div class="left">
+  <div class = "container1" *ngIf="logged">
+    <div class="user-info">
+      <a [routerLink]="['/profile']">
+        <img src="profile.png"
+             alt="Profile Icon" class="profile-icon">
+        {{ userName }}
+      </a>
+    </div>
+  </div>
+  <div class = "container2" *ngIf="!logged">
+      <a [routerLink]="['/login']">Login</a>
+      <span> / </span>
+      <a [routerLink]="['/register']">Register</a>
+  </div>
+
+</div>
+</div>
+<router-outlet></router-outlet>
+
