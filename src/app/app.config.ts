@@ -5,7 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import {RegisterComponent } from './register/register.component';
 import {TariffsComponent} from './tariffs/tariffs.component';
-import {ContactsComponent} from './contacts/contacts.component';
+import {ContactsComponent} from './contact_us/contact_us.component';
 import {ServicesComponent} from './services/services.component';
 import {ProfileComponent} from './profile/profile.component';
 

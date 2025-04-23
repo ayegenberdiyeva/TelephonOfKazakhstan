@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {RouterLink} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import {AuthService} from '../auth.service';
 import {CommonModule} from '@angular/common';
 
@@ -15,7 +15,7 @@ import {CommonModule} from '@angular/common';
 })
 export class ProfileComponent implements OnInit {
   user: any;
-  constructor(public authService: AuthService) {}
+  constructor(public authService: AuthService, private router: Router) {}
 
   get logged(): boolean {
     return this.authService.logged;
@@ -29,5 +29,9 @@ export class ProfileComponent implements OnInit {
       error: (err) => console.error('Failed to load profile', err)
     });
   }
+  changeTariff() {
+    this.router.navigate(['/tariffs']);
+  }
+
 
 }

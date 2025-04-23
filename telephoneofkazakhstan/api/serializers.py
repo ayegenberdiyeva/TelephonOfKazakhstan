@@ -1,8 +1,7 @@
 from rest_framework import serializers
-from rest_framework.response import Response
-from rest_framework.views import APIView
-from .models import User, TariffPlan, UserTariff, Transaction
 from django.contrib.auth import get_user_model
+from .models import User, TariffPlan, UserTariff, Transaction
+from django.contrib.auth.hashers import make_password
 
 User = get_user_model()
 
@@ -20,24 +19,27 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['id', 'name', 'surname', 'phone_number', 'password']
+        extra_kwargs = {'password': {'write_only': True}}
 
-        extra_kwargs={
-            'password':{'write_only': True}
-        }
-        
-        def create(self, validated_data):
-            password = validated_data.pop('password', None)
-            instance = self.Meta.model(**validated_data)
-            if password is not None:
-                instance.set_password(password)
-            instance.save()
-            return instance
-
+    def create(self, validated_data):
+        password = validated_data.pop('password', None)
+        instance = self.Meta.model(**validated_data)
+        if password is not None:
+            instance.set_password(password)
+        instance.save()
+        return instance
 
 class TariffPlanSerializer(serializers.ModelSerializer):
     class Meta:
         model = TariffPlan
-        fields = '__all__'
+        fields = ['name', 'price', 'data_limit', 'call_minutes', 'sms_count']
+
+class UserProfileSerializer(serializers.ModelSerializer):
+    tariff = TariffPlanSerializer()
+
+    class Meta:
+        model = User
+        fields = ['username', 'name', 'surname', 'tariff']
 
 class ChangeTariffSerializer(serializers.Serializer):
     new_tariff_id = serializers.IntegerField()
@@ -65,17 +67,3 @@ class TransactionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Transaction
         fields = '__all__'
-
-
-
-class TariffPlanSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = TariffPlan
-        fields = ['name', 'price', 'data_limit', 'call_minutes', 'sms_count']
-
-class UserProfileSerializer(serializers.ModelSerializer):
-    tariff = TariffPlanSerializer()
-
-    class Meta:
-        model = User
-        fields = ['username', 'name', 'surname', 'tariff']
