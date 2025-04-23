@@ -7,10 +7,21 @@
 </ng-container>
 
 <ng-container *ngIf="logged">
+  <div class="profile-container">
   <p>Name: {{ user.name }}</p>
   <p>Surname: {{ user.surname }}</p>
-  <p>Phone Number: {{ user.username }}</p>
-  <p>Tariff: {{ user.tariff?.name }}</p>
-  <button>Change Tariff</button>
-  <button (click)="logout()">Log out</button>
+  <p>Phone Number: {{ user.phone_number }}</p>
+  <div class="tariff-info" *ngIf="user.tariff">
+  <h2>Tariff Plan</h2>
+  <p *ngIf="user.tariff">Name: {{ user.tariff.name }}</p>
+  <p *ngIf="user.tariff">Price: {{ user.tariff.price }}</p>
+  <p *ngIf="user.tariff">Data Limit: {{ user.tariff.data_limit }} GB</p>
+  <p *ngIf="user.tariff">Call Minutes: {{ user.tariff.call_minutes }} min</p>
+  <p *ngIf="user.tariff">SMS: {{ user.tariff.sms_count }} SMS</p>
+    <button (click)="changeTariff()">Change Tariff</button>
+  </div>
+
+    <button (click)="logout()" class="logout-button">Log out</button>
+  </div>
+
 </ng-container>
